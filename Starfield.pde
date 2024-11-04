@@ -1,20 +1,18 @@
 Particle [] multi = new Particle[200];
-OddballParticle test;
 
 void setup() {
   size(600, 600);
   background(0);
   frameRate(30);
-  test = new OddballParticle();
-  for (int i = 0; i<multi.length; i++) {
+  for (int i = 0; i < multi.length; i++){
+    multi[i] = new OddballParticle();
+  }
+  for (int i = 5; i<multi.length; i++) {
     multi[i] = new Particle();
   }
 }
 void draw() {
   background(0);
-  test.show();
-  test.move();
-  test.reset();
   for (int i = 0; i < multi.length; i++) {
     multi[i].show();
     multi[i].move();
@@ -60,8 +58,8 @@ class Particle {
 
 class OddballParticle extends Particle { //inherits from Particle
   OddballParticle() {
-    myX = 100;
-    myY = 200;
+    myX = (int)(Math.random()*100)+100;
+    myY = (int)(Math.random()*100)+100;
     myAngle = Math.random()*100;
     mySpeed = (Math.random()*30)+1;
   }
@@ -81,7 +79,7 @@ class OddballParticle extends Particle { //inherits from Particle
   }
 
   void reset() {
-    if (myX > 500 || myY > 500 || myX < 200 || myY < 200) {
+    if (myX > 500 || myY > 500 || myX < 100 || myY < 100) {
       myX = (int)(Math.random()*50)+400;
       myY = (int)(Math.random()*50)+100;
       myAngle = Math.random()*100;
@@ -90,3 +88,4 @@ class OddballParticle extends Particle { //inherits from Particle
     }
   }
 }
+
